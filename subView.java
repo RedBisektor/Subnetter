@@ -132,7 +132,7 @@ public class subView extends JPanel{
         output = new JTextArea("");
         JScrollPane scroll = new JScrollPane(output,ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scroll.setLocation(10,160);
-        scroll.setSize(150,150);
+        scroll.setSize(175,150);
         add(scroll);
     }
 
@@ -184,7 +184,22 @@ public class subView extends JPanel{
         ranges = model.getmaskRanges();
         for (int i=0; i < ranges.length; i++)
         {
-            output.append(ranges[i][0] + " - " + ranges[i][1] + '\n');
+            if (model.getBoundary()==3)
+            {
+                output.append(first[0].getText() + "." + second[0].getText() + "." + third[0].getText() + "." +ranges[i][0] + " - " + first[0].getText() + "." + second[0].getText() + "." + third[0].getText() + "." + ranges[i][1] + '\n');
+            }
+            if (model.getBoundary()==2)
+            {
+                output.append(first[0].getText() + "." + second[0].getText() + "." + ranges[i][0] + ".0 - " + first[0].getText() + "." + second[0].getText() + "." + ranges[i][1] + ".255\n");
+            }
+            if (model.getBoundary()==1)
+            {
+                output.append(first[0].getText() + "." + ranges[i][0] + ".0.0 - " + first[0].getText() + "." + ranges[i][1] + ".255.255\n");
+            }
+            if (model.getBoundary()==0)
+            {
+                output.append("You are not supposed to be seeing this\n");
+            }
         }
     }
 }

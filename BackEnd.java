@@ -109,6 +109,7 @@ public class BackEnd {
                 if(mask[i]!= 255)
                 {
                     boundary =i;
+                    break;
                 }
             }
         }
